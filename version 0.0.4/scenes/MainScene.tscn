@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/MainScene.gd" type="Script" id=1]
+[ext_resource path="res://images/map/Ground.png" type="Texture" id=2]
+[ext_resource path="res://scenes/interface/Buttle_GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/interface/GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/different/BackGround.png" type="Texture" id=5]
+[ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/characters/Enemy.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 93.0889, 270.934 )
+
+[node name="MainScene" type="Node"]
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -484.0
+margin_right = 3830.0
+custom_constants/separation = -5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="TextureRect" parent="HBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 484.0
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 1915.0
+margin_right = 3835.0
+margin_bottom = 484.0
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="TextureRect" parent="HBoxContainer"]
+margin_left = 3830.0
+margin_right = 5750.0
+margin_bottom = 484.0
+texture = ExtResource( 2 )
+
+[node name="Interface_Background" type="ParallaxBackground" parent="."]
+layer = 10
+
+[node name="Buttle_GUI" parent="Interface_Background" instance=ExtResource( 3 )]
+margin_left = -156.185
+margin_top = -152.849
+margin_right = 86.8154
+margin_bottom = -72.8486
+
+[node name="GUI" parent="Interface_Background" instance=ExtResource( 4 )]
+
+[node name="BC_ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="Background" type="TextureRect" parent="BC_ParallaxBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 969.303, 533.492 )
+z_index = 10
+
+[node name="Exit_level" type="StaticBody2D" parent="."]
+position = Vector2( 3541.08, 398.173 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Exit_level_col" type="CollisionShape2D" parent="Exit_level"]
+shape = SubResource( 1 )
+
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2433.98, 527.038 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2915.51, 520.531 )
+[connection signal="Player_attack" from="Interface_Background/Buttle_GUI" to="Player" method="_on_Buttle_GUI_Player_attack"]
+[connection signal="Player_defence" from="Interface_Background/Buttle_GUI" to="Player" method="_on_Buttle_GUI_Player_defence"]
+[connection signal="Player_stop" from="Interface_Background/Buttle_GUI" to="Player" method="_on_Buttle_GUI_Player_stop"]
+[connection signal="Attack_enemy_go_Main" from="Player" to="." method="_on_Player_Attack_enemy_go_Main"]
+[connection signal="Deffence_enemy_go_Main" from="Player" to="." method="_on_Player_Deffence_enemy_go_Main"]
+[connection signal="GUI_button_attack_block" from="Player" to="Interface_Background/Buttle_GUI" method="_on_Player_GUI_button_attack_block"]
+[connection signal="GUI_button_attack_free" from="Player" to="Interface_Background/Buttle_GUI" method="_on_Player_GUI_button_attack_free"]
+[connection signal="GUI_button_block" from="Player" to="Interface_Background/Buttle_GUI" method="_on_Player_GUI_button_block"]
+[connection signal="GUI_button_deffence_block" from="Player" to="Interface_Background/Buttle_GUI" method="_on_Player_GUI_button_deffence_block"]
+[connection signal="GUI_button_deffence_free" from="Player" to="Interface_Background/Buttle_GUI" method="_on_Player_GUI_button_deffence_free"]
+[connection signal="GUI_button_free" from="Player" to="Interface_Background/Buttle_GUI" method="_on_Player_GUI_button_free"]
+[connection signal="Refresh_health" from="Player" to="Interface_Background/GUI" method="_on_Player_Refresh_health"]
+[connection signal="Refresh_stamina" from="Player" to="Interface_Background/GUI" method="_on_Player_Refresh_stamina"]
+[connection signal="body_entered" from="Player" to="Interface_Background/Buttle_GUI" method="_on_Player_body_entered"]
+[connection signal="body_entered" from="Player" to="." method="_on_Player_body_entered"]
+[connection signal="Enemy_died" from="Enemy" to="Interface_Background/GUI" method="_on_Enemy_Enemy_died"]
+[connection signal="Enemy_died" from="Enemy" to="." method="_on_Enemy_Enemy_died"]
+[connection signal="Hide_battle_gui" from="Enemy" to="Interface_Background/Buttle_GUI" method="_on_Enemy_Hide_battle_gui"]
+[connection signal="Player_can_move" from="Enemy" to="Player" method="_on_Enemy_Player_can_move"]
+[connection signal="Enemy_died" from="Enemy2" to="Interface_Background/GUI" method="_on_Enemy_Enemy_died"]
+[connection signal="Enemy_died" from="Enemy2" to="." method="_on_Enemy_Enemy_died"]
+[connection signal="Hide_battle_gui" from="Enemy2" to="Interface_Background/Buttle_GUI" method="_on_Enemy_Hide_battle_gui"]
+[connection signal="Player_can_move" from="Enemy2" to="Player" method="_on_Enemy_Player_can_move"]

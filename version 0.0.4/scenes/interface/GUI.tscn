@@ -1,0 +1,187 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/GUI.gd" type="Script" id=1]
+[ext_resource path="res://images/interface/bar_info_bc.png" type="Texture" id=2]
+[ext_resource path="res://images/interface/bar_bc.png" type="Texture" id=3]
+[ext_resource path="res://images/interface/bar_hp_progress.png" type="Texture" id=4]
+[ext_resource path="res://images/interface/bar_st_progress.png" type="Texture" id=5]
+[ext_resource path="res://images/interface/info_bc.png" type="Texture" id=6]
+[ext_resource path="res://images/interface/sattings.png" type="Texture" id=7]
+[ext_resource path="res://images/interface/sattings_menu.png" type="Texture" id=8]
+
+[node name="GUI" type="MarginContainer"]
+anchor_right = 1.0
+margin_bottom = 116.0
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 126.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 1800.0
+margin_bottom = 126.0
+size_flags_horizontal = 3
+
+[node name="HP_HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+editor/display_folded = true
+margin_right = 1800.0
+margin_bottom = 61.0
+
+[node name="HP_bar_info" type="NinePatchRect" parent="HBoxContainer/VBoxContainer/HP_HBoxContainer"]
+editor/display_folded = true
+margin_right = 116.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 116, 61 )
+texture = ExtResource( 2 )
+
+[node name="Lable" type="Label" parent="HBoxContainer/VBoxContainer/HP_HBoxContainer/HP_bar_info"]
+margin_left = 9.83624
+margin_top = 15.7456
+margin_right = 25.8362
+margin_bottom = 29.7456
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "hp"
+
+[node name="HP_Label" type="Label" parent="HBoxContainer/VBoxContainer/HP_HBoxContainer/HP_bar_info"]
+margin_left = 53.2544
+margin_top = 17.655
+margin_right = 77.2544
+margin_bottom = 31.655
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "23"
+
+[node name="HP_TextureProgress" type="TextureProgress" parent="HBoxContainer/VBoxContainer/HP_HBoxContainer"]
+margin_left = 120.0
+margin_right = 646.0
+margin_bottom = 61.0
+value = 20.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+
+[node name="Kills" type="NinePatchRect" parent="HBoxContainer/VBoxContainer/HP_HBoxContainer"]
+editor/display_folded = true
+margin_left = 650.0
+margin_right = 786.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 136, 61 )
+texture = ExtResource( 2 )
+
+[node name="Lable" type="Label" parent="HBoxContainer/VBoxContainer/HP_HBoxContainer/Kills"]
+margin_left = 9.83624
+margin_top = 14.9718
+margin_right = 36.8362
+margin_bottom = 28.9718
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Kills:"
+
+[node name="Kills" type="Label" parent="HBoxContainer/VBoxContainer/HP_HBoxContainer/Kills"]
+margin_left = 62.9141
+margin_top = 15.3337
+margin_right = 86.9141
+margin_bottom = 29.3337
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 2
+
+[node name="ST_HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 1800.0
+margin_bottom = 126.0
+
+[node name="ST_bar_info" type="NinePatchRect" parent="HBoxContainer/VBoxContainer/ST_HBoxContainer"]
+editor/display_folded = true
+margin_right = 116.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 116, 61 )
+texture = ExtResource( 2 )
+
+[node name="Lable" type="Label" parent="HBoxContainer/VBoxContainer/ST_HBoxContainer/ST_bar_info"]
+margin_left = 10.0
+margin_top = 16.0
+margin_right = 26.0
+margin_bottom = 47.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "st
+"
+
+[node name="ST_Label" type="Label" parent="HBoxContainer/VBoxContainer/ST_HBoxContainer/ST_bar_info"]
+margin_left = 53.2544
+margin_top = 17.655
+margin_right = 77.2544
+margin_bottom = 31.655
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "23"
+
+[node name="ST_TextureProgress" type="TextureProgress" parent="HBoxContainer/VBoxContainer/ST_HBoxContainer"]
+margin_left = 120.0
+margin_right = 646.0
+margin_bottom = 61.0
+value = 20.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 5 )
+
+[node name="Kills_button" type="TextureButton" parent="HBoxContainer/VBoxContainer/ST_HBoxContainer"]
+margin_left = 650.0
+margin_right = 780.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 130, 61 )
+texture_normal = ExtResource( 6 )
+
+[node name="Lable" type="Label" parent="HBoxContainer/VBoxContainer/ST_HBoxContainer/Kills_button"]
+margin_left = 10.0
+margin_top = 16.0
+margin_right = 58.0
+margin_bottom = 30.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Healing"
+
+[node name="Sattings_button" type="TextureButton" parent="HBoxContainer"]
+editor/display_folded = true
+margin_left = 1804.0
+margin_right = 1920.0
+margin_bottom = 126.0
+texture_normal = ExtResource( 7 )
+
+[node name="Satting_background" type="TextureRect" parent="HBoxContainer/Sattings_button"]
+editor/display_folded = true
+margin_left = -442.814
+margin_top = 117.906
+margin_right = -139.814
+margin_bottom = 517.906
+texture = ExtResource( 8 )
+
+[node name="Satting_exit" type="TextureButton" parent="HBoxContainer/Sattings_button/Satting_background"]
+editor/display_folded = true
+margin_left = 90.4404
+margin_top = 315.748
+margin_right = 206.44
+margin_bottom = 376.748
+texture_normal = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Sattings_button/Satting_background/Satting_exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.8231
+margin_top = 11.9415
+margin_right = -73.1769
+margin_bottom = -35.0585
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "EXIT"
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ST_HBoxContainer/Kills_button" to="." method="_on_Kills_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Sattings_button" to="." method="_on_Sattings_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Sattings_button/Satting_background/Satting_exit" to="." method="_on_Satting_exit_pressed"]
